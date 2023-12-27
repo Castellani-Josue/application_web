@@ -1,0 +1,59 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gérant du Maraicher en ligne</title>
+    <link rel="stylesheet" type="text/css" href="gerant_style.css">
+</head>
+<body>
+
+<div id="stock-container">
+    <table id="table-stock">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Article</th>
+            <th>Prix à l'unité</th>
+            <th>Quantité</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="advertisement-container" class="label-container">
+    <h2>Article sélectionné :</h2>
+
+    <label for="id">id :</label>
+    <input type="text" id="id" name="id">
+
+    <label for="article">Article :</label>
+    <input type="text" id="article" name="article">
+
+    <label for="prix">Prix à l'unité :</label>
+    <input type="text" id="prix" name="prix">
+
+    <label for="quantite">Quantité souhaitée :</label>
+    <input type="text" id="quantite" name="quantite">
+
+    <button id="update-button">Mettre à jour</button>
+</div>
+
+<div id="cubic-zone">
+    <div class="black-border-square">
+        <img id="product-image" src="chemin_vers_image.jpg" alt="Image de l'article">
+    </div>
+</div>
+
+</body>
+</html>
