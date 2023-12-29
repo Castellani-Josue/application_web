@@ -45,7 +45,7 @@ function TableauArticle(containerId) {
         var data = xhr.response[i];
 
 
-        // Create rows with sample data
+
         for (var j = 0; j < Object.keys(data).length-1; j++) {
             var cell = row.insertCell(j);
             var values = Object.values(data);
@@ -53,12 +53,37 @@ function TableauArticle(containerId) {
             cell.innerHTML = values[j];
         }
 
+        row.onclick = function (event) {
+            var rowIndex = event.target.parentNode.rowIndex;
+
+            // Désélectionner toutes les lignes sauf celle cliquée
+            var allRows = document.querySelectorAll(".Tableau tbody tr");
+            allRows.forEach(function (otherRow) {
+                if (otherRow.rowIndex !== rowIndex) {
+                    otherRow.classList.remove("selected");
+                }
+            });
+
+            var cells = Array.from(event.target.parentNode.cells);
+            var rowData = cells.map(cell => cell.innerHTML);
+
+            // Inverser la classe "selected" pour la ligne cliquée
+            this.classList.toggle("selected");
+            console.log(this);
+            console.log(rowData);
+
+            // Mettre à jour l'image du produit
+            var productImage = document.getElementById("product-image");
+            productImage.src = "../resources/" + rowData[1] + ".jpg";
+            console.log(productImage.src);
+
+
+        };
+
+
 
 
     }
-
-
-
 
     var container = document.getElementById(containerId);
 

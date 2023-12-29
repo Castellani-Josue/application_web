@@ -1,0 +1,11 @@
+.Tableau tbody tr:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.Tableau tbody tr.selected {
+    background-color: yellow;
+    color: black;
+}
+
+
