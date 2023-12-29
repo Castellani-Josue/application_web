@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gérant du Maraicher en ligne</title>
+    <link rel="stylesheet" type="text/css" href="../css/gerant_style.css">
+    <script src="../script/API.js" async></script>
+</head>
+<body>
+
+<div id="advertisement-row">
+
+    <div id="grid-container">
+        <div class="grid-item">
+            <label class="grid-label">!!! Bienvenue sur le site du Maraicher en ligne !!!</label>
+        </div>
+    </div>
+
+</div>
+
+<div id="content-row">
+
+
+    <div id="stock-container" >
+        <div id="table-stock">
+
+        </div>
+    </div>
+
+    <div id="advertisement-container" class="label-container">
+        <div id="conteneur">
+            <div id="bloc">
+                <h2 class="form-group">Article sélectionné :</h2>
+                <div class="label-container">
+                    <label for="id">id :</label>
+                    <input type="text" id="id" name="id"><br>
+                </div>
+                <div class="label-container">
+                    <label for="article">Article :</label>
+                    <input type="text" id="article" name="article"><br>
+                </div>
+
+                    <div class="prix-container">
+                        <label for="prix">Prix à l'unité :</label>
+                        <input type="text" id="prix" name="prix"><br>
+                    </div>
+                    <div class="label-container">
+                        <label for="quantite">Quantité souhaitée :</label>
+                        <input type="text" id="quantite" name="quantite"><br>
+                    </div>
+                    <input class="form-group" type="submit" value="Mettre à jour">
+            </div>
+        </div>
+    </div>
+
+    <div id="cubic-zone">
+        <div class="black-border-square">
+            <img id="product-image"  alt="">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
