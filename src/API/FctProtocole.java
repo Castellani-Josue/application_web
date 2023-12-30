@@ -10,7 +10,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FctProtocole
 {
@@ -86,15 +88,6 @@ public class FctProtocole
 
     }
 
-
-
-
-
-
-
-
-
-
     static boolean Update(String updateArticle) throws SQLException, ClassNotFoundException, IOException {
         updateArticle = updateArticle.substring(1,updateArticle.length()-1);
 
@@ -111,10 +104,11 @@ public class FctProtocole
 
             list.add(value);
         }
-        boolean modif = gestion_bd.getInstance().UpdateArticle(list.get(0),list.get(1),list.get(2),list.get(3));
+        boolean modif = gestion_bd.getInstance().UpdateArticle(list.get(0),list.get(1),list.get(2));
 
         return modif;
     }
+
 
 
 

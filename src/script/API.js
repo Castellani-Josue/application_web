@@ -74,8 +74,17 @@ function TableauArticle(containerId) {
 
             // Mettre à jour l'image du produit
             var productImage = document.getElementById("product-image");
-            productImage.src = "../resources/" + rowData[1] + ".jpg";
+            productImage.src = "../resources/" + rowData[1] + ".png";
             console.log(productImage.src);
+
+            var productid = document.getElementById("idArticle");
+            productid.value = rowData[0];
+            var productname = document.getElementById("article");
+            productname.value = rowData[1];
+            var productprice = document.getElementById("prix");
+            productprice.value = rowData[2];
+            var productquantity = document.getElementById("quantite");
+            productquantity.value = rowData[3];
 
 
         };
@@ -89,67 +98,5 @@ function TableauArticle(containerId) {
 
     container.appendChild(tableau);
 }
-function createCubicZone() {
-    // Create the main container
-    var cubicZone = document.createElement("div");
-    cubicZone.id = "cubic-zone";
-    cubicZone.style.width = "30%";
-    cubicZone.style.backgroundColor = "transparent";
-    cubicZone.style.padding = "20px";
-    cubicZone.style.marginTop = "10px";
-    cubicZone.style.borderRadius = "8px";
 
-    // Create the black-border-square container
-    var blackBorderSquare = document.createElement("div");
-    blackBorderSquare.className = "black-border-square";
-    blackBorderSquare.style.width = "300px";
-    blackBorderSquare.style.height = "300px";
-    blackBorderSquare.style.border = "2px solid #000";
-    blackBorderSquare.style.display = "flex";
-    blackBorderSquare.style.alignItems = "center";
-    blackBorderSquare.style.justifyContent = "center";
-
-    // Create the image element
-    var productImage = document.createElement("img");
-    productImage.id = "product-image";
-    productImage.src = "C:\\Users\\josue\\Java_Project_2023_2024\\application_web\\resources\\";
-    productImage.alt = "";
-
-    // Append elements to the DOM
-    blackBorderSquare.appendChild(productImage);
-    cubicZone.appendChild(blackBorderSquare);
-
-    // Append the whole component to the body or any other desired parent element
-    document.body.appendChild(cubicZone);
-}
-
-
-/*function TableauArticle() {
-    var tableau = document.createElement("tableau");
-    tableau.className = "Tableau";
-
-    var Titlehead = document.createElement("thead");
-    tableau.appendChild(Titlehead);
-
-    var Hrow = Titlehead.insertRow();
-
-    var Hcell = document.createElement("th");
-    Hcell.innerHTML = "id";
-    Hrow.appendChild(Hcell);
-
-    Hcell = document.createElement("th");
-    Hcell.innerHTML = "Article";
-    Hrow.appendChild(Hcell);
-
-    Hcell = document.createElement("th");
-    Hcell.innerHTML = "Prix";
-    Hrow.appendChild(Hcell);
-
-    Hcell = document.createElement("th");
-    Hcell.innerHTML = "Quantité";
-    Hrow.appendChild(Hcell);
-
-
-
-}*/
 

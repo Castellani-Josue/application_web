@@ -1,5 +1,6 @@
 package API;
 
+
 import Bean.gestion_bd;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 
 
 import static API.FctProtocole.*;
+
 
 
 public class Serveur
@@ -58,52 +60,35 @@ public class Serveur
             }
             else if (requestMethod.equalsIgnoreCase("POST"))
             {
+
                 System.out.println("--- Requête POST reçue (update) ---");
                 // Maj de la liste des articles
+
                 String requestBody = readRequestBody(exchange);
                 System.out.println("requestBody = " + requestBody);
                 try {
-                    Update(requestBody);
-                } catch (SQLException | ClassNotFoundException e) {
+                    boolean maj = Update(requestBody);
+                    if(maj)
+                    {
+                        System.out.println("Mise à jour réussie");
+                        sendResponse(exchange, 200, "Article maj avec succes (OUI)");
+                    }
+                    else
+                    {
+                        System.out.println("Mise à jour échouée");
+                        sendResponse(exchange, 400, "Echec maj (NON)");
+                    }
+                }
+                catch (SQLException | ClassNotFoundException e)
+                {
                     throw new RuntimeException(e);
                 }
-                sendResponse(exchange, 201, "Article mise à jour avec succes");
+
             }
-            else sendResponse(exchange, 405, "Methode non autorisee");
+            else sendResponse(exchange, 405, "Methode non autorisee !");
         }
 
     }
-
-
-    /*static class HandlerImg implements HttpHandler
-    {
-        @Override
-        public void handle(HttpExchange exchange) throws IOException
-        {
-            String requestMethod = exchange.getRequestMethod();
-            if (requestMethod.equalsIgnoreCase("GET"))
-            {
-                System.out.println("--- Requête GET reçue (obtenir la liste) ---");
-                // Récupérer la liste des articles au format JSON
-                String response = null;
-                try {
-                    response = convertArticleToJson();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-                sendResponse(exchange, 200, response);
-            }
-            else sendResponse(exchange, 405, "Methode non autorisee");
-        }
-
-    }*/
-
-
-
-
-
-
-
 
 
 
