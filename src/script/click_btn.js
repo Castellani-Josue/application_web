@@ -1,6 +1,6 @@
 var button = document.getElementById("btn");
 
-button.onclick = (function () {
+button.addEventListener("click", function () {
 
 
     var xhr = new XMLHttpRequest();
@@ -14,16 +14,14 @@ button.onclick = (function () {
     var quantite = document.getElementById("quantite").value;
 
 
-    var data = [
-    {
-                "id": id,
-                "prix": prix,
-                "quantite": quantite
-            }
-    ];
+    var data = {
+        "id": id,
+        "prix": prix,
+        "quantite": quantite
+    };
+
 
     var requete = JSON.stringify(data);
-    console.log("send data");
     xhr.send(requete);
 
 
@@ -32,18 +30,30 @@ button.onclick = (function () {
 
             console.log(xhr.response);
             console.log("Article mis à jour avec succès");
-            var tableRows = document.querySelectorAll(".Tableau tbody tr");
+            var tableRows = document.getElementsByClassName("Tableau");
 
-            // Assuming your table structure matches the data structure
-            tableRows.forEach(function (row, rowIndex) {
-                var cells = row.cells;
-                cells[0].innerHTML = id;
-                cells[2].innerHTML = prix;
-                cells[3].innerHTML = quantite;
-            });
+            for (var i = 0; i < tableRows.length; i++) {
+                var table = tableRows[i];
+                var row = table.getElementsByTagName('tr');
+                for (var j = 0; j < row.length; j++) {
+                    var col = row[j].getElementsByTagName('td');
+                    if (col.length > 0) {
+                        var cellvalue = col[0].innerHTML || col[0].textContent;
+                        if(cellvalue === id)
+                        {
+                            console.log(row[j]);
+                            col[0].innerHTML = id
+                            col[2].innerHTML = prix;
+                            col[3].innerHTML = quantite;
+                            break;
+                        }
 
-        } else {
-            console.log("Erreur lors de la mise à jour de l'article");
+
+                    }
+                }
+
+            }
+
         }
     }
 

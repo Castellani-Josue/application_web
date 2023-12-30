@@ -89,23 +89,29 @@ public class FctProtocole
     }
 
     static boolean Update(String updateArticle) throws SQLException, ClassNotFoundException, IOException {
+        System.out.println("je suis dans la fonction Update");
         updateArticle = updateArticle.substring(1,updateArticle.length()-1);
-
+        System.out.println("apres le udpateArticle.substring");
         String[] tab = updateArticle.split(",");
 
         ArrayList<String> list = new ArrayList<String>();
+        System.out.println("avant le for");
 
         for (String s : tab)
         {
+            System.out.println("je suis dans le for");
             String[] tab2 = s.split(":");
 
             String key = tab2[0].replaceAll("\"", "").trim();
             String value = tab2[1].replaceAll("\"", "").replaceAll("}", "").trim();
 
             list.add(value);
+            System.out.println("apres le add");
+            System.out.println("key : " + key + " value : " + value);
         }
+        System.out.println("ares le for");
         boolean modif = gestion_bd.getInstance().UpdateArticle(list.get(0),list.get(1),list.get(2));
-
+        System.out.println("modif : " + modif);
         return modif;
     }
 

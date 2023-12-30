@@ -95,16 +95,18 @@ public class gestion_bd
     }
 
 
-    public boolean UpdateArticle(String id ,String prix, String quantite)
+    public boolean UpdateArticle(String id ,String prix, String stock)
     {
 
-
-        String requete = "UPDATE article SET  prix = " + prix + ", quantite = " + quantite + " WHERE id = " + id + ";";
-
+        System.out.println("je suis dans la fonction UpdateArticle");
+        String requete = "UPDATE articles SET  prix = " + prix + ", stock = " + stock + " WHERE id = " + id + ";";
+        System.out.println("requete : " + requete);
 
         try
         {
+            System.out.println("je suis dans le try de UpdateArticle");
             int modification = dbConnect.executeUpdate(requete);
+            System.out.println("modification : " + modification);
             if(modification == 0)
             {
                 System.out.println("Aucune ligne n'a été modifier, article introuvable.");
